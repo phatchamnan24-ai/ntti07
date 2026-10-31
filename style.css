@@ -1,0 +1,486 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #392626;
+  color: #190949;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background-color: #281b5f;
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.95rem;
+}
+
+header nav a:hover {
+  color: #f39c12;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 10%;
+  background: linear-gradient(135deg, #181351, #bdc3c7);
+  color: white;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.book-cover-placeholder {
+  width: 220px;
+  height: 320px;
+  background-color:135deg, #181351, #bdc3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #f39c12;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #e67e22;
+}
+
+.books-section, .about-section, .contact-section {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.books-section h2, .about-section h2, .contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* Slider & View Book Button Styles */
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px !important;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.view-btn {
+  background-color: #2c3e50;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.view-btn:hover {
+  background-color: #f39c12;
+  color: white !important;
+}
+
+/* រៀបចំទីតាំងប៊ូតុងព្រួញឆ្វេងស្តាំកុំឱ្យជាន់លើសៀវភៅ */
+.carousel-control-prev {
+  left: -20px;
+}
+.carousel-control-next {
+  right: -20px;
+}
+
+/* សម្រាប់អេក្រង់ទូរស័ព្ទដៃ៖ ឱ្យបង្ហាញម្តង ១ក្បាល ហើយអូសបានយ៉ាងរលូន */
+@media (max-width: 768px) {
+  .carousel-control-prev, .carousel-control-next {
+    display: none; /* លាក់ប៊ូតុងព្រួញលើទូរស័ព្ទដើម្បីកុំឱ្យចង្អៀត ព្រោះអាចប្រើម្រាមដៃអូស (Swipe) បាន */
+  }
+  .carousel-inner {
+    overflow-x: auto;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+  }
+  .carousel-item {
+    display: block;
+    margin-right: 0;
+    flex: 0 0 100%;
+  }
+  .carousel-item .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .carousel-item .col {
+    scroll-snap-align: start;
+    flex: 0 0 85%; /* បង្ហាញទំហំកាតសៀវភៅ ៨៥% នៃអេក្រង់ទូរស័ព្ទ */
+  }
+}
+
+.about-section p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.contact-section form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-section input, .contact-section textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 0.9rem;
+}
+/* About Section Styles */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f39c12;
+}
+
+.img-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  border: 4px solid #f39c12;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.education {
+  color: #e67e22;
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.translate-btn {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.translate-btn:hover {
+  background-color: #f39c12;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* ប្រើ Inter សម្រាប់អង់គ្លេស និង Kantumruy Pro សម្រាប់ខ្មែរ */
+  font-family: 'Khmer OS Kangrey', 'Khmer OS Kangrey', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.8; /* បង្កើនគម្លាតបន្ទាត់បន្តិច ដើម្បីឱ្យអក្សរខ្មែរងាយស្រួលមើល */
+}
+
+/* កំណត់ Font ពិសេសសម្រាប់ចំណងជើង ដើម្បីឱ្យមើលទៅកាន់តែស្អាត */
+h1, h2, h3, h4, .logo {
+  font-family: 'Khmer OS Kangrey', 'Khmer OS Kangrey', sans-serif;
+  letter-spacing: 0.5px;
+
+}
+/* Social Media Links Styles */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon i {
+  font-size: 1.2rem;
+}
+
+/* ពណ៌តាម Brand នីមួយៗ */
+.telegram {
+  background-color: #0088cc;
+}
+.telegram:hover {
+  background-color: #006699;
+  transform: translateY(-3px);
+}
+
+.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.instagram:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+
+.facebook {
+  background-color: #1877f2;
+}
+.facebook:hover {
+  background-color: #145dbf;
+  transform: translateY(-3px);
+}
+
+/* Custom Bootstrap Social Buttons */
+.btn-telegram {
+  background-color: #0088cc;
+  border: none;
+  transition: transform 0.2s;
+}
+.btn-telegram:hover {
+  background-color: #006699;
+  transform: translateY(-3px);
+  color: white;
+}
+
+.btn-instagram {
+  background: linear-gradient(45deg, #14045b 0%,  #14045b 0%,  #14045b 0%,  #14045b 0%,  #14045b 0%);
+  border: none;
+  transition: transform 0.2s;
+}
+.btn-instagram:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+  color: white;
+}
+
+.btn-facebook {
+  background-color: #1877f2;
+  border: none;
+  transition: transform 0.2s;
+}
+.btn-facebook:hover {
+  background-color: #145dbf;
+  transform: translateY(-3px);
+  color: white;
+}
+/* ========== កូដជួសជុល និងរៀបចំសម្រាប់អេក្រង់ទូរស័ព្ទដៃ (Mobile Fix) ========== */
+@media (max-width: 991px) {
+  
+  /* ១. កែសម្រួលផ្នែក About ឱ្យរូបថតនៅពីលើ ហើយអក្សរធ្លាក់មកក្រោមចំកណ្តាលស្អាត */
+  .about-container {
+    flex-direction: column !important; /* បង្ខំឱ្យធ្លាក់មកជួរឈរ */
+    text-align: center !important; /* ឱ្យអក្សររត់មកកណ្តាល */
+    padding: 20px !important;
+    gap: 20px !important;
+    max-width: 100% !important;
+  }
+
+  /* ២. ជួសជុលអក្សរពណ៌ទឹកក្រូចដែលធ្លាយឱ្យរីកពេញអេក្រង់ទូរស័ព្ទលែងកៀនចំហៀង */
+  .about-text {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  .about-text h3, .about-text p, .about-text .description, .about-text .education {
+    text-align: center !important; /* ឱ្យរាល់ចំណងជើង និងអក្សររៀបរាប់មកចំកណ្តាល */
+    width: 100% !important;
+  }
+
+  /* ៣. រៀបចំទំហំរូបថតឱ្យសមល្មមនឹងអេក្រង់ទូរស័ព្ទ */
+  .about-image img, .img-placeholder {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto !important; /* ឱ្យរូបថតរត់មកចំកណ្តាលទំព័រ */
+  }
+
+  /* ៤. កែសម្រួលផ្នែក Header ឱ្យធ្លាក់មកជួរឈរស្អាត */
+  header {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 15px 5% !important;
+  }
+  
+  header nav {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+  
+  header nav a {
+    margin-left: 0 !important;
+  }
+
+  /* ៥. កែសម្រួលផ្នែក Hero ខាងលើឱ្យធ្លាក់មកជួរឈរស្អាត */
+  .hero {
+    flex-direction: column-reverse !important;
+    text-align: center !important;
+    padding: 40px 5% !important;
+    gap: 30px !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem !important;
+  }
+}
+/* ========== កូដរៀបចំឱ្យផ្នែក About រត់មកចំកណ្តាលអេក្រង់ស្អាតលំដាប់ Premium ========== */
+
+/* ១. កំណត់ឱ្យ Section ធំទាំងមូលរត់មកកណ្តាល */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ឱ្យចំណងជើង និងប្រអប់កាតរត់មកកណ្តាល */
+  justify-content: center;
+  width: 100%;
+  padding: 60px 10%;
+}
+
+/* ២. រៀបចំប្រអប់កាតពណ៌សឱ្យនៅចំកណ្តាល និងមានគម្លាតស្អាត */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ឱ្យរូបថត និងអក្សរនៅក្នុងកាតរត់មកកណ្តាល */
+  gap: 40px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto !important; /* បង្ខំឱ្យកាតពណ៌សមកចំកណ្តាលអេក្រង់ */
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: left; /* រក្សាអក្សរឱ្យរត់ពីឆ្វេងមកវិញដើម្បីងាយស្រួលអាន */
+}
+
+/* ៣. រៀបចំឱ្យផ្នែករូបថត និងប៊ូតុងបកប្រែមានគម្លាតស្មើគ្នា */
+.about-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ៤. កូដជំនួយពេលមើលនៅលើទូរស័ព្ទដៃ (ឱ្យធ្លាក់ជួរមកកណ្តាលទាំងអស់ស្វ័យប្រវត្តិ) */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column !important; /* ធ្លាក់មកជួរឈរលើទូរស័ព្ទ */
+    text-align: center !important; /* អក្សររត់មកកណ្តាលលើទូរស័ព្ទ */
+    padding: 30px 20px;
+    gap: 25px;
+  }
+  
+  .about-text h3, .about-text p {
+    text-align: center !important;
+  }
+}
